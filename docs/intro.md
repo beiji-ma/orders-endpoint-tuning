@@ -14,10 +14,6 @@ Before any formal tuning began, the system was already exhibiting signs of extre
 
 This wasn’t a warning sign; it was a fire alarm. It meant the persistence layer had no guardrails, and the cost of a single API call was catastrophically high under concurrency.
 
-Before any formal tuning began, the system was already exhibiting signs of extreme stress — **at peak load, the database reported over 55,000 active cursors.**
-
-This wasn’t a warning sign; it was a fire alarm. It meant the persistence layer had no guardrails, and the cost of a single API call was catastrophically high under concurrency.
-
 The issue long predated our formal intervention. A large, imperative code block in `CacheOperations.java` attempted to manually pre-load associated entities by deeply traversing and `Hibernate.initialize(...)` each nested relationship.
 
 This code—clearly disliked even by its original author—reflected a desperate workaround in absence of structured access shaping mechanisms. It blurred boundaries between business logic, persistence logic, and data lifecycle assumptions.
