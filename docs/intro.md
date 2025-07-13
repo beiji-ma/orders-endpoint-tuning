@@ -6,7 +6,9 @@ This article revisits a seemingly routine performance tuning effort—optimizing
 
 ### 2. Historical Attempts Before Refactoring
 
+![Version Comparison of JDBC statements and RT(ms)](assets/jdbc-rt-comparison.png)
 
+*Figure: Statement volume and response time before and after structured tuning.*
 
 Before any formal tuning began, the system was already exhibiting signs of extreme stress — **at peak load, the database reported over 55,000 active cursors.**
 
