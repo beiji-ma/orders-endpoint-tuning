@@ -106,3 +106,26 @@ In the next chapter, we’ll explore how these questions led us to design a **Fe
 
 Because performance isn’t about tricks. It’s about structure. And structure starts with language.
 
+---
+
+## 7. Reflecting on the Tradeoff
+
+While two-step fetching has proven effective in restoring pagination stability and observability, it is not a universal solution. In fact, it may introduce unnecessary overhead under certain conditions:
+
+- If the final projection involves only flat fields with no joins
+- If the database optimizer (e.g., Oracle’s CBO) can generate an efficient plan
+- If the query benefits from index-only access paths
+
+In these cases, forcing a two-step strategy may result in extra round-trips, less efficient cache use, or even redundant query planning.
+
+This highlights a structural limitation of most ORM frameworks:
+
+- **Fetch paths are statically bound**
+- The developer, not the query planner, selects between join, batch, or lazy fetch
+- Cost-based optimization is bypassed by fixed fetch rules
+
+Two-step fetching succeeds by making the access path explicit—but at the cost of runtime flexibility. It reflects a broader theme of this series:
+
+> Structure wins over guesswork. But structure also comes with responsibility.
+
+Our journey ahead is to restore both: **structure and adaptability**. Through composition, through abstraction, and through rethinking how we express access intent.
