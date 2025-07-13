@@ -52,3 +52,34 @@ Developers caught in the middle often fall back to imperative traversal because 
 
 > You don’t write this kind of code because you want to. You write it because nothing else works.
 
+## 3. Hidden Costs of Manual Hydration
+
+Manual traversal may feel deterministic, but it's a false sense of control. It introduces hidden costs that only surface under load:
+
+### 3.1 Query Multiplication
+
+Each nested call (e.g., `.getCustomerEntities()` → `.getAccountEntities()` → `.getRegionEntities()`) potentially triggers a new query. Multiply that by the number of orders per page, and the database load grows exponentially.
+
+What looks like a single API call may explode into **hundreds of queries**, especially if Hibernate is configured to lazy-load by default.
+
+### 3.2 Session Coupling
+
+This traversal only works while Hibernate maintains an active session. Once the session is closed—or if the entity graph is cached and later deserialized—accessing these associations triggers runtime exceptions.
+
+This means business logic becomes implicitly tied to ORM session semantics, a coupling that's hard to test and easy to break.
+
+### 3.3 Non-observability
+
+From the outside, there's no way to tell which queries are being fired or why. SQL logs may help, but there's no structural visibility into the hydration pattern.
+
+As a result, developers are left blind to performance regressions until it's too late.
+
+> "When every field might trigger a query, predictability dies."
+
+### 3.4 Defensive Overreach
+
+To avoid all the above, developers often over-hydrate: they load everything, just in case.
+
+This leads to bloated memory use, wide query joins, and poor pagination performance—without even knowing if the downstream logic actually needed that data.
+
+> Manual hydration doesn’t solve the problem. It just pushes the cost somewhere harder to see.
