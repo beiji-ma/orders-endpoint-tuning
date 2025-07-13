@@ -6,7 +6,7 @@ This article revisits a seemingly routine performance tuning effort—optimizing
 
 ### 2. Historical Attempts Before Refactoring
 
-![Version Comparison of JDBC statements and RT(ms)](assets/jdbc-rt-comparison.png)
+![Version Comparison of JDBC statements and RT(ms)](../assets/jdbc-rt-comparison.png)
 
 *Figure: Statement volume and response time before and after structured tuning.*
 
