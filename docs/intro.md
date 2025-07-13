@@ -102,23 +102,23 @@ Most ORM frameworks, Hibernate included, simply don’t support:
 
 ### 8. Looking Forward
 
-From the moment the two-step access path was deployed, the system entered a period of exceptional stability. For nearly two years, Zabbix metrics showed consistently low system load, minimal slow queries, and—perhaps most notably—none of the recurring database connectivity issues that previously plagued the system. Those notorious moments when "the database is gone" or connections silently timed out had all but vanished.
+The deployment of the two-step access path marked a dramatic turning point. For nearly two years, Zabbix metrics confirmed exceptional system stability: minimal slow queries, steady resource usage, and—perhaps most importantly—no more of those cryptic “database is gone” or connection timeout events. It was a period of quiet reliability.
 
-At the time, we predicted that the solution would hold for at least two years—and it did.
+This wasn’t just luck. The prediction—that the solution would hold for two years—was grounded in a structural insight: **as long as data volume grew at a linear rate, cursor pressure would remain bounded**. And for a time, it did.
 
-But time moves on. Roughly two and a half years later, symptoms began to resurface. The crashes observed in the more recent period—especially around six months ago—were largely attributable to infrastructure issues, not application logic. Some were due to network instability (either local to the company network or broader outages affecting the Lund region); others were caused by NFS dismounts on VMs, where disk access temporarily failed, resulting in database unavailability. The architecture that once served us well started showing signs of stress again. That resurgence is precisely what prompted this series: a chance to revisit not just the tuning strategy, but the assumptions it was built upon.
+But time doesn’t stand still. Roughly two and a half years later, symptoms began to resurface. Most of the outages observed in the past six months stemmed from infrastructure—not application—failures: intermittent network disruptions (local and regional), NFS dismounts on virtual machines, and other low-level instabilities. These are well-documented and explainable.
 
-This article marks not the end of tuning, but the beginning of a new line of inquiry: How do we design access layers that are structured, observable, adaptable—and fast?
+Still, the reappearance of database stress—however externally triggered—reminded us that the underlying architecture had never fully evolved. The tuning had worked, but only within a bounded regime. **Once that regime shifted, cracks reappeared.**
 
-Future articles in this series will explore that question.
+And that brings us to the real question:\
+**Should developers even be trapped in this level of cursor math, session awareness, and hydration complexity in the first place?**
 
-The original prediction—that this tuning would hold for two years—was not blind optimism. It was based on a structural understanding: **as long as data volume remained within expected growth bands, cursor count would grow linearly, but manageably**. And it did, for a time.
+The fact that such deep tuning was needed at all is not a failure of execution—it is a symptom of architectural limitation.
 
-But this also raises a more profound question: **Should developers even be worrying about cursor math and session semantics in the first place?** The fact that this level of tuning was needed to restore baseline performance is a red flag—not of engineering failure, but of architectural insufficiency.
+This article doesn’t close the loop; it opens a new one. One that asks:\
+**How do we design access layers that are structured, observable, adaptable—and fast, without manual babysitting?**
 
-Observability helped, tuning helped, but the real gain was systemic clarity. That’s what we aim to pursue further in this series. This article marks not the end of tuning, but the beginning of a new line of inquiry: How do we design access layers that are structured, observable, adaptable—and fast?
-
-Future articles in this series will explore that question.
+Future articles in this series will explore that question—with clarity, curiosity, and structural honesty.
 
 ### Appendix: Conventional JPA Techniques (Not Endorsed, But Documented)
 
