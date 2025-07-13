@@ -83,3 +83,50 @@ To avoid all the above, developers often over-hydrate: they load everything, jus
 This leads to bloated memory use, wide query joins, and poor pagination performance—without even knowing if the downstream logic actually needed that data.
 
 > Manual hydration doesn’t solve the problem. It just pushes the cost somewhere harder to see.
+
+## 4. Declarative Alternatives? Not Quite.
+
+Of course, someone eventually suggested trying `@EntityGraph`, or even `@Subgraph` to declaratively fetch the required structure.
+
+It seemed promising—until it wasn’t.
+
+These declarative options, while syntactically elegant, introduced their own set of problems:
+
+- They are **static annotations**—not dynamically composable.
+- They **fail silently** when misaligned with real usage patterns.
+- They **don’t interact well with pagination** or conditional logic.
+
+More importantly, they reinforced the illusion that fetch behavior can be configured without a structural access strategy.
+
+So while they helped with some query planning on paper, in practice they only moved the guesswork from code to configuration.
+
+> Declarative fetch plans are like traffic signs in a fog. You still need headlights—and a map.
+
+We’ll revisit these mechanisms in detail in a later article. For now, it’s enough to say:
+
+> They didn’t help here. And they couldn’t have.
+
+## 5. This Wasn’t Just Bad Code
+
+It’s tempting to look at `CacheOperations.java` and scoff. To see it as technical debt or legacy residue. But that would miss the real lesson.
+
+This wasn’t just bad code. It was an **early warning**. It told us:
+
+- That we lacked a structural way to describe access paths.
+- That hydration was emergent, not planned.
+- That business logic was reaching down into the persistence layer—because no one else was taking responsibility.
+
+The real problem wasn’t that we wrote imperative loading code. The problem was that the system gave us no better alternative.
+
+> "When systems fail structurally, the symptoms show up in code."
+
+## 6. Looking Ahead
+
+The imperative hydration pattern—ugly as it was—served its purpose. It bought us time. But it also bought us technical debt.
+
+In the next chapter, we’ll explore how we stopped fighting the ORM—and started redesigning the access path itself.
+
+Through a strategy we call **two-step fetching**, we introduced a new abstraction boundary between entity shape and data layout. It’s not a new feature. It’s a new way to think.
+
+Let’s go there next.
+
