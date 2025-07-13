@@ -2,6 +2,11 @@
 
 ### 1. Introduction
 
+> **Disclaimer**: The `/orders` endpoint referenced in this article is a placeholder and does not correspond to any real-world API path.\
+> This tuning case originates from a domain-specific enterprise system rather than an internet-scale service.\
+> We are well aware that typical web-scale APIs would often rely on flat data models or document stores like MongoDB in such scenarios.\
+> This example is chosen solely for clarity and to expose structural insights applicable across architectures.
+
 This article revisits a seemingly routine performance tuning effort—optimizing the `/orders` endpoint under high load. But beyond Hibernate annotations or fetch strategy tweaks, it became an invitation to examine the underlying assumptions of how APIs access data, how fetch strategies are structured, and how architectural primitives (or their absence) shape performance outcomes.
 
 ### 2. Historical Attempts Before Refactoring
@@ -118,9 +123,21 @@ This article doesn’t close the loop; it opens a new one. One that asks:\
 
 Future articles in this series will explore that question—with clarity, curiosity, and structural honesty.
 
-### Appendix: Conventional JPA Techniques (Not Endorsed, But Documented)
+### 9. Appendix: Conventional JPA Techniques (Not Endorsed, But Documented)
 
 These may help in some cases, but don’t address the architectural root:
+
+- `@BatchSize`
+- `JOIN FETCH` with limit caveats
+- Native queries with projections
+- DTO-based hydrators
+- Projection interfaces in Spring Data
+
+> Our position: these techniques are symptomatic, not structural. We document them, but advocate for architectural rewiring instead.
+
+---
+
+
 
 - `@BatchSize`
 - `JOIN FETCH` with limit caveats
