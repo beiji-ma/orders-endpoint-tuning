@@ -26,20 +26,21 @@ It begins with a real-world tuning case and expands into a critique of JPA, ORM-
 | 04 | `04.entitygraph-vs-subgraph.md` | *Declarative Fetch Plans, Declarative Headaches* | Why EntityGraph looks declarative but breaks down in practice |
 | 05 | `05.two-step-fetching.md` | *Rebuilding the Access Path* | Manual fetch logic vs structural control |
 | 06 | `06.access-path-critique.md` | *ORM Can’t Save You* | Static plans, runtime blindness, and why mapping isn’t access |
-| 07 | `07.matrixone-oid-api.md` | *The OID-First Philosophy* | Efficient access via ID-centric models and relational calculus |
-| 08 | `08.fetch-dsl-intro.md` | *From Fetch Graphs to Fetch Language* | DSLs for expressing structure, access intent, and observability |
+| 07 | `07.index-design-matrixone.md` | *Indexing as Language* | Designing index structures as native access logic |
+| 08 | `08.model-unification.md` | *One Model, Many Runtimes* | From DB to JVM to memory — unifying structure everywhere |
+| 09 | `09.fetch-dsl-intro.md` | *From Fetch Graphs to Fetch Language* | DSLs for expressing structure, access intent, and observability |
 
 ### 🧪 Optional / Extended Chapters
 
 | No. | File | Title | Description |
 |-----|------|-------|-------------|
-| 09 | `09.observability-design.md` | *Designing for Query Shape Visibility* | Structure-aware logging and runtime introspection |
-| 10 | `10.jpa-vs-redis.md` | *Caching Is Not a Query Strategy* | Redis is fast. But what are you caching, really? |
-| 11 | `11.appendix-metadata-cache.md` | *What Oracle Knows That ORM Forgot* | Library cache, dictionary cache, and the power of structure-first memory |
-| 12 | `12.the-shift.md` | *A Developer’s Journey from Fixes to Structures* | From random patches to system clarity: a personal transition |
-| 13 | `13.appendix-faq.md` | *FAQ and Misconception Debunking* | Addressing common doubts, misunderstandings, and critiques |
-| 14 | `14.appendix-koans.md` / `-en.md` / `-sv.md` | *Rootless Roots* | Metaphorical reflections on architectural thinking |
-| 15 | `15.afterword.md` | *Why Metaphors Stay When Code Fades* | Final words on enduring design language |
+| 10 | `10.observability-design.md` | *Designing for Query Shape Visibility* | Structure-aware logging and runtime introspection |
+| 11 | `11.jpa-vs-redis.md` | *Caching Is Not a Query Strategy* | Redis is fast. But what are you caching, really? |
+| 12 | `12.appendix-metadata-cache.md` | *What Oracle Knows That ORM Forgot* | Library cache, dictionary cache, and the power of structure-first memory |
+| 13 | `13.the-shift.md` | *A Developer’s Journey from Fixes to Structures* | From random patches to system clarity: a personal transition |
+| 14 | `14.appendix-faq.md` | *FAQ and Misconception Debunking* | Addressing common doubts, misunderstandings, and critiques |
+| 15 | `15.appendix-koans.md` / `-en.md` / `-sv.md` | *Rootless Roots* | Metaphorical reflections on architectural thinking |
+| 16 | `16.afterword.md` | *Why Metaphors Stay When Code Fades* | Final words on enduring design language |
 
 ---
 
