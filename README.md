@@ -1,48 +1,53 @@
-# Orders Endpoint Tuning
+# 📘 Orders Endpoint Tuning Series · MMSA 架构文集
 
-A real-world performance tuning story that became an architectural inquiry.
+> **Imagine this:**  
+> Dassault one day open-sources the engine of ENOVIA / 3DEXPERIENCE.  
+> You wouldn’t be reading this series.  
+> But until that day comes, I’m left with one choice:  
+> **Build it myself.**
 
-## 📖 Introduction
+This series documents a journey from firefighting performance issues in a production system, to uncovering the deeper structural limitations of modern application development — and proposing a way forward.
 
-This project begins with a high-volume `/orders` endpoint that exposed deep cracks in how traditional ORM tools—especially JPA—deal with data access under scale.
+It begins with a real-world tuning case and expands into a critique of JPA, ORM-based access paths, and the misuse of caching systems like Redis. But we don’t stop there. We offer an alternative: **a language-first, structure-oriented approach** to query, cache, and system design.
 
-Through one tuning effort, we rediscovered the power of **access path design**, **two-phase hydration**, and **systemic observability**.
+---
 
-## 📚 Series Roadmap
+## 🧭 Roadmap
 
-This repository is structured around a set of focused articles:
+*Note: All chapter files follow numeric naming convention, starting from `01.intro.md`.*
 
-1. `intro.md` — *From Hotfixes to Structure*  
-   Opening story and systemic framing.
+### 📂 Core Chapters
 
-2. `cacheoperations-analysis.md` — *When Code Smells Cry for Help*
+| No. | File | Title | Description |
+|-----|------|-------|-------------|
+| 01 | `01.intro.md` | *From Hotfixes to Structure* | Opening story and systemic framing |
+| 02 | `02.cacheoperations-analysis.md` | *When Code Smells Cry for Help* | The first sign of trouble: ugly caching logic and desperation |
+| 03 | `03.jpa-hhh000104.md` | *Paging vs. Fetching: Why JPA Crumbles* | The real cost of mixing fetch joins with pagination |
+| 04 | `04.entitygraph-vs-subgraph.md` | *Declarative Fetch Plans, Declarative Headaches* | Why EntityGraph looks declarative but breaks down in practice |
+| 05 | `05.two-step-fetching.md` | *Rebuilding the Access Path* | Manual fetch logic vs structural control |
+| 06 | `06.access-path-critique.md` | *ORM Can’t Save You* | Static plans, runtime blindness, and why mapping isn’t access |
+| 07 | `07.matrixone-oid-api.md` | *The OID-First Philosophy* | Efficient access via ID-centric models and relational calculus |
+| 08 | `08.fetch-dsl-intro.md` | *From Fetch Graphs to Fetch Language* | DSLs for expressing structure, access intent, and observability |
 
-3. `jpa-hhh000104.md` — *Paging vs. Fetching: Why JPA Crumbles*
+### 🧪 Optional / Extended Chapters
 
-4. `entitygraph-vs-subgraph.md` — *Declarative Fetch Plans, Declarative Headaches*
+| No. | File | Title | Description |
+|-----|------|-------|-------------|
+| 09 | `09.observability-design.md` | *Designing for Query Shape Visibility* | Structure-aware logging and runtime introspection |
+| 10 | `10.jpa-vs-redis.md` | *Caching Is Not a Query Strategy* | Redis is fast. But what are you caching, really? |
+| 11 | `11.appendix-metadata-cache.md` | *What Oracle Knows That ORM Forgot* | Library cache, dictionary cache, and the power of structure-first memory |
+| 12 | `12.the-shift.md` | *A Developer’s Journey from Fixes to Structures* | From random patches to system clarity: a personal transition |
+| 13 | `13.appendix-faq.md` | *FAQ and Misconception Debunking* | Addressing common doubts, misunderstandings, and critiques |
+| 14 | `14.appendix-koans.md` / `-en.md` / `-sv.md` | *Rootless Roots* | Metaphorical reflections on architectural thinking |
+| 15 | `15.afterword.md` | *Why Metaphors Stay When Code Fades* | Final words on enduring design language |
 
-5. `two-step-fetching.md` — *Rebuilding the Access Path*
+---
 
-6. `access-path-critique.md` — *ORM Can’t Save You*
+## 📝 License
 
-7. `matrixone-oid-api.md` — *The OID-First Philosophy*
+© 2025 Beiji Ma · This series is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
 
-8. *(Optional)* `observability-design.md` — *Designing for Query Shape Visibility*
+You are free to share, adapt, and build upon the content for any purpose — even commercially — as long as you give proper credit and license your modifications under the same terms.
 
-9. *(Optional)* `jpa-vs-systemic-tuning.md` — *Why We Don’t Recommend JPA Fixes*
-
-> We don't tune harder. We tune structurally.
-
-## 🖼️ Assets
-
-Place illustrative diagrams in the `assets/` folder, e.g.:
-
-- `assets/jdbc-rt-comparison.png`
-
-## 📎 References
-
-- [Baeldung: NamedEntityGraph](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
-- [Appsloveworld: Pagination with Lazy Load](https://www.appsloveworld.com/springboot/100/123/using-spring-data-jpa-entitygraph-with-lazy-load-mode-for-namedattributenode-fiel)
-- Internal: p6spy logs, profiling dashboards
-- MatrixOne (legacy system) – OID-first access model (not MatrixOrigin)
+> Because structure deserves to be shared, too.
 
