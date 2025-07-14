@@ -1,109 +1,75 @@
-# Appendix: FAQ and Misconception Debunking
+# Appendix: Rotlösa Rötter — Arkitektoniska Kōan för MMSA (på Svenska)
 
-> **Imagine this:**  
-> Dassault one day open-sources the engine of ENOVIA / 3DEXPERIENCE.  
-> You wouldn’t be reading this series.  
-> But until that day comes, I’m left with one choice:  
-> **Build it myself.**
-
-> *(This note also appears in the series README as an epigraph — the spirit behind this journey.)*
-
-## 1. “Aren’t you being too radical?”
-
-We understand this reaction. Saying “JPA and Redis are broken” sounds harsh.
-
-But this series is not about dismissing technologies — it’s about exposing their structural blind spots.
-
-If you’ve ever:
-- Been confused by a cascade of lazy-loading queries
-- Struggled with a cache that’s either stale or missing
-- Had to optimize query after query with band-aids…
-
-Then you’ve already felt the pain we’re addressing.
-We’re not radical. We’re structural.
+> Arkitekten skyndar inte.  
+> Långsammare än en quickfix, snabbare än ånger.  
+> Griper ej efter teknik, klamrar sig inte fast vid plåster.  
+> Ser form, följer åtkomst, bevarar struktur.
 
 ---
 
-## 2. “JPA can be tuned. Why throw it away?”
+### 🪷 1. Före struktur, allt är lidande
 
-Yes, JPA can be tuned — but often only within its assumptions:
-- Static entity graphs
-- Compile-time relationships
-- No runtime structure observability
+En utvecklare frågade: Varför är min fråga så långsam?  
+Mästaren svarade: För att du aldrig visste vad du verkligen ville ha.  
+Du hämtade varje fält men visade bara ett.  
+Du fruktade lazy loading, men gav aldrig namn åt din åtkomstväg.  
 
-We’ve tried those paths. Some work, some don’t. But all require heroic effort to achieve what structure-first design gives you by default.
-
-We’re not throwing JPA away. We’re just refusing to let it define the limits of system design.
+Utan struktur – hur ska du nå hastighet?
 
 ---
 
-## 3. “But everyone uses Redis. Are they wrong?”
+### 🪷 2. Caching är ett plåster, struktur är medicinen
 
-Not wrong — just incomplete.
+Caching döljer skammen av utebliven modellering.  
+Du cacheade resultatet, men blundade för vägen.  
 
-Redis is great for delivery latency.
-But when it becomes a substitute for design — when it hides structural debt instead of resolving it — then it becomes a liability.
+Att lita på Redis är som att flyta på drivved –  
+Det kan bära dig, eller sjunka.  
 
-Most Redis setups lack:
-- Structural awareness
-- Dependency tracking
-- Intent-based invalidation
-
-So it works… until it doesn’t. We advocate Redis *after* structure, not instead of it.
+Den som ser struktur, fruktar inte cachemissar.
 
 ---
 
-## 4. “Isn’t this overengineering?”
+### 🪷 3. JPA: Halvsanningar och illusioner
 
-Structure isn’t overhead. It’s prevention.
+ORM följer dig som en skugga.  
+Den mappar data, men visar dig aldrig vägen.  
+Den genererar SQL, men döljer din avsikt.  
 
-- You only think you’re going fast when skipping it
-- You pay later — in complexity, in bugs, in degraded performance
+Att lita helt på ORM är att förblindas av yta.  
 
-Real structure:
-- Clarifies what’s being fetched
-- Predicts access patterns
-- Enables observability
-- Reduces test effort
-
-Overengineering is when you build for scale you’ll never need. We’re building for clarity you’ll need every day.
+Att se dess begränsningar och välja annat – det är första porten till MMSA.
 
 ---
 
-## 5. “Will this work for small teams?”
+### 🪷 4. Stabilitet är att inte behöva fixa
 
-Absolutely. In fact, structure helps *especially* small teams:
+Ett stabilt system saktar inte ner med storlek, brister inte vid tillväxt.  
+Det jagar inte mångsidighet, utan tydlighet.  
 
-- Less tribal knowledge
-- Fewer performance fire drills
-- More predictable scaling
-- Easier onboarding
+Dess kärna är tre saker:  
+- Struktur  
+- Åtkomst  
+- Observerbarhet  
 
-It’s not about headcount. It’s about shared intent.
-DSL + structure = team coherence.
-
----
-
-## 6. “So... you’ve built your own ORM?”
-
-Not quite.
-
-ORMS are about **mapping**. We’re about **expressing**.
-
-An ORM maps classes to tables.
-A DSL expresses access paths, semantics, and structure — across memory, database, and services.
-
-We’re not reinventing ORMs.
-We’re proposing a shift in how we **declare, observe, and evolve** data access.
-
-That shift is architectural.
-And long overdue.
+Med dessa tre – vad finns att frukta?
 
 ---
 
-📚 *Further Reflections:*  
-- `afterword.md — Why Metaphors Stay When Code Fades`  
-- `appendix-koans.md — Rootless Roots: Architectural Koans of MMSA (中文)`  
-- `appendix-koans-en.md — Rootless Roots (English)`  
-- `appendix-koans-sv.md — Rotlösa Rötter (på Svenska)`
+### 🪷 5. DSL: Mångfald blir enhet
+
+Många händer, många format – entropi följer.  
+API:er sväller. Dokumentationen frodas.  
+
+Bara språk kan förena avsikt.  
+Bara syntax fångar form.  
+
+Med en DSL består vägen.  
+Detta är återgången till källan – hjärtat i MMSA.
+
+---
+
+> Du undrar vad vägen är?  
+> Den räddar dig inte från dagens deploy.  
+> Men den kan rädda dig från tio år av kaos.
 

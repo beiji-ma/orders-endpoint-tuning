@@ -6,6 +6,8 @@
 > But until that day comes, I’m left with one choice:  
 > **Build it myself.**
 
+> *(This note also appears in the series README as an epigraph — the spirit behind this journey.)*
+
 ## 1. “Aren’t you being too radical?”
 
 We understand this reaction. Saying “JPA and Redis are broken” sounds harsh.
@@ -96,4 +98,12 @@ We’re proposing a shift in how we **declare, observe, and evolve** data access
 
 That shift is architectural.
 And long overdue.
+
+---
+
+📚 *Further Reflections:*  
+- `afterword.md — Why Metaphors Stay When Code Fades`  
+- `appendix-koans.md — Rootless Roots: Architectural Koans of MMSA (中文)`  
+- `appendix-koans-en.md — Rootless Roots (English)`  
+- `appendix-koans-sv.md — Rotlösa Rötter (på Svenska)`
 
