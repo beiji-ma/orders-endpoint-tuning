@@ -110,10 +110,10 @@ Still — given where we started — the outcome bordered on miraculous.
 
 The transformation wasn't just anecdotal — it was measurable. Here's how each tuning iteration stacked up, both in terms of response time and database statement load:
 
-![Response Time Across ORM Strategies](./assets/response-time-ms.png)  
+![Response Time Across ORM Strategies](../assets/response-time-ms.png)  
 *Response time dropped from nearly 15 seconds to under 2.*
 
-![JDBC Statement Count Across ORM Strategies](./assets/jdbc-statement-count.png)  
+![JDBC Statement Count Across ORM Strategies](../assets/jdbc-statement-count.png)  
 *From over 54,000 SQL statements to barely 1,200 — but not all drops were wins.*
 
 These results clarified an uncomfortable truth: **not all optimizations are equal**, and sometimes, cutting too much introduces new bottlenecks — like the case of `SubGraph` reducing statements but increasing latency.
