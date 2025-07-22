@@ -208,6 +208,19 @@ It’s letting go of the illusion that the ORM ever knew what you needed in the 
 
 ---
 
+📘 **Legend of Abbreviations (used in charts):**
+
+- **NEG** — `@NamedEntityGraph`
+- **SG** — `@SubGraph`
+- **BS** — `@BatchSize`
+- **2SF** — Two-Step Fetch
+- **RT** — Response Time
+- **JDBC Count** — Number of executed SQL statements (including those triggered by lazy loads or cascades)
+
+🧠 *These tuning primitives were combined across different versions to assess trade-offs in latency and statement pressure.*
+
+---
+
 This piece is only the beginning.
 
 In the next chapters of this series, we’ll dissect common ORM pitfalls, explore alternatives beyond the patch loop, and propose structure-driven approaches to data access — with real-world code, metrics, and migration paths.
