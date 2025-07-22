@@ -1,5 +1,7 @@
 ## Order Endpoint: Anatomy of an ORM Collapse
 
+*A Tuning Chronicle from Faith to Fatigue*
+
 *Or: How @EntityGraph Failed, and What Saved Us for Two Years*
 
 ---
@@ -24,7 +26,7 @@ Even before 2.44.0, the endpoint had already seen one celebrated fix: **introduc
 
 That cache victory eventually led directly into the hydration trap inside `CacheOperations` — and opened the door to the N+1 implosion that followed.
 
-There’s a moment worth remembering. When the performance issue first surfaced, a senior colleague — someone deeply experienced — offered a solution without hesitation: “Just use cache.”
+There’s a moment worth remembering. When I discussed a similar performance issue with a seasoned developer friend — not directly involved with this endpoint — he offered a solution without hesitation: “Just use cache.”
 
 It wasn’t cynicism. It was belief. In many Java teams, **caching is architecture**. If you’re seasoned, you know it by instinct — cache it, and it’s fixed. Side effects? Don’t worry about them.
 
@@ -106,15 +108,16 @@ Still — given where we started — the outcome bordered on miraculous.
 
 ---
 
-📌 **Visual Summary: ORM Tuning Outcomes**
+📌 **Visual Summary: ORM Tuning Outcomes**  
+*From Fixes to Fatigue — Measuring the Illusion of Progress*
 
-The transformation wasn't just anecdotal — it was measurable. Here's how each tuning iteration stacked up, both in terms of response time and database statement load:
+**1. Response Time (ms) Across ORM Strategies**  
+*Not every drop in queries leads to better performance.*  
+![Response Time Across ORM Strategies](../assets/response-time-ms.png)
 
-![Response Time Across ORM Strategies](../assets/response-time-ms.png)  
-*Response time dropped from nearly 15 seconds to under 2.*
-
-![JDBC Statement Count Across ORM Strategies](../assets/jdbc-statement-count.png)  
-*From over 54,000 SQL statements to barely 1,200 — but not all drops were wins.*
+**2. JDBC Statement Count Across ORM Strategies**  
+*More dramatic on paper than in real systems — beware of misleading victories.*  
+![JDBC Statement Count Across ORM Strategies](../assets/jdbc-statement-count.png)
 
 These results clarified an uncomfortable truth: **not all optimizations are equal**, and sometimes, cutting too much introduces new bottlenecks — like the case of `SubGraph` reducing statements but increasing latency.
 
