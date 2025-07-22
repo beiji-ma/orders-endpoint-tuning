@@ -191,3 +191,26 @@ The order endpoint didn’t just expose a tuning flaw. It revealed an architectu
 
 And they were lucky to have survived the first fall.
 
+---
+
+### Epilogue: Moving Past the Illusion
+
+We can’t annotate our way out of architectural debt.
+
+And yet, most teams still try — one patch, one `@Graph`, one batch at a time.
+
+But performance isn’t just an emergent property of code. It’s a structural property of thought.
+
+**Maybe it’s time to stop tuning — and start redesigning.**
+
+Because sometimes, the real fix isn’t deeper fetch control.
+It’s letting go of the illusion that the ORM ever knew what you needed in the first place.
+
+---
+
+This piece is only the beginning.
+
+In the next chapters of this series, we’ll dissect common ORM pitfalls, explore alternatives beyond the patch loop, and propose structure-driven approaches to data access — with real-world code, metrics, and migration paths.
+
+Stay tuned.
+
