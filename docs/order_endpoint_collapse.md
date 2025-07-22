@@ -12,7 +12,7 @@
 
 This is the story of how a production endpoint — `/orders` — went through a full spectrum of ORM tuning strategies, from naive fetch joins to two-step fetch decomposition. It’s not a whitepaper. It’s what actually happened.
 
-It started with a single call that triggered **55,000 database cursors**, consistently breaching 5s response time. The issue wasn’t infrastructure. It was design — or rather, a lack thereof.
+It started with a single call that triggered **55,000 database cursors**, consistently breaching 15s response time. The issue wasn’t infrastructure. It was design — or rather, a lack thereof.
 
 ---
 
