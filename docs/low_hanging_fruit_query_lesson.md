@@ -30,10 +30,6 @@ graph LR
         Policy --> Result2[Result Returned]
     end
 
-    classDef old fill=#f4cccc,stroke=#d43f3f;
-    classDef new fill=#d9ead3,stroke=#4a7f33;
-    class Old_Architecture old;
-    class New_Architecture new;
 ```
 
 **Comparison**
