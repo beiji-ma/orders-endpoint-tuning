@@ -4,7 +4,7 @@
 
 - **Domain:** Enterprise-developed product information system used across multiple divisions.
 - **Backend stack:** Java + Spring Boot with REST APIs, using **MariaDB** as the main relational store.
-- **Data scale:** Tens of millions of records across entities (products, variants, configurations, users, policies).
+- **Data scale:** Mid-sized (two primary tables in the tens of thousands to a few hundred thousand rows) — not “big data,” but enough to punish inefficient access patterns.
 - **Usage pattern:** Highly dynamic filtering and authorization per division or site — many ad-hoc query combinations driven by UI filters.
 
 The system was originally designed for small datasets but grew rapidly as new divisions joined. Query logic stayed in the app layer while data complexity expanded at the database layer.
