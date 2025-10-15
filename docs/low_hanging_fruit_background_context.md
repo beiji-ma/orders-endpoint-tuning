@@ -19,7 +19,7 @@ At the heart of the issue was a **filtering mechanism implemented entirely in me
 - There was **no predicate pushdown**; the database could not optimize because it was only asked for raw, unfiltered data.
 - Permissions were validated *after* fetching — meaning all rows, even irrelevant ones, consumed I/O and RAM.
 
-When usage expanded, a single query could trigger **millions of DB hits** and cause OOM errors in the app tier. Developers responded with patches and caches, but those only masked the underlying problem.
+When usage expanded, a single query could trigger **millions of DB hits** and cause OOM errors in the app tier. Developers responded with patches and caches, but those only masked the underlying problem. Despite mid-sized tables, JPA N+1, missing predicate pushdown, and no in-memory indexing inflated round-trips — turning ordinary volumes into hundreds of thousands, even millions, of individual database calls query cascades.
 
 ---
 
